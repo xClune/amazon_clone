@@ -58,7 +58,6 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid')
     .innerHTML = productsHTML;
 
-
 // Make add to cart button interactive
 // Use DOM to get quantity selector for product
 // Use if to either push to cart list 
