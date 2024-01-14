@@ -27,7 +27,7 @@ products.forEach((product) => {
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-selector-${product.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -58,10 +58,18 @@ products.forEach((product) => {
 document.querySelector('.js-products-grid')
     .innerHTML = productsHTML;
 
+
+// Make add to cart button interactive
+// Use DOM to get quantity selector for product
+// Use if to either push to cart list 
+// or add to existing quantity
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
     button.addEventListener('click', () => {
       const productId = button.dataset.productId;
+      const quantitySelector = (document.querySelector(`.js-quantity-selector-${productId}`));
+      const quantity = quantitySelector.value;
 
       let matchingItem;
 
@@ -72,11 +80,11 @@ document.querySelectorAll('.js-add-to-cart')
       });
 
       if (matchingItem) {
-        matchingItem.quantity += 1;
+        matchingItem.quantity += Number(quantity);
       } else {
         cart.push({
           productId: productId,
-          quantity: 1
+          quantity: Number(quantity)
         })
       }   
       
