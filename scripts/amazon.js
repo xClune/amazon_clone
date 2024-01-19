@@ -1,4 +1,5 @@
 // Loop through product object list applying HTML structure to each
+import {cart} from '../data/cart.js';
 
 let productsHTML = '';
 
