@@ -1,12 +1,11 @@
 
-import {cart, addToCart} from '../data/cart.js';
+import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from './utils/money.js';
 
 let productsHTML = '';
 
 // Loop through product object list applying HTML structure to each
-
 products.forEach((product) => {
     productsHTML += `
     <div class="product-container">
@@ -59,24 +58,19 @@ products.forEach((product) => {
           </button>
         </div>`;
 });
-
 document.querySelector('.js-products-grid')
     .innerHTML = productsHTML;
 
-function updateCartQuantity (productId) {
-  // cart qty total display
-    let cartQuantity = 0;
+// added to cart message & cart qty display
+function updateCart (productId) {
+    
+  const cartQuantity = calculateCartQuantity();
+
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = cartQuantity;
+  
   // default 'falsy' variable to use later
     let addedMessageTimeoutId;
-
-  // loop and count through cart
-    cart.forEach((cartItem) => {
-      cartQuantity += cartItem.quantity;
-    })
-
-  // change display qty to new value
-    document.querySelector('.js-cart-quantity')
-      .innerHTML = cartQuantity;
 
   // Added to cart message
     const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`
@@ -104,6 +98,7 @@ function updateCartQuantity (productId) {
     });
     };
 
+// click event on add to cart
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button) => {
 
@@ -113,6 +108,9 @@ document.querySelectorAll('.js-add-to-cart')
       const quantity = Number(quantitySelector.value);
 
       addToCart(productId, quantity);
-      updateCartQuantity(productId);
+      updateCart(productId);
       });
     });
+
+
+  
