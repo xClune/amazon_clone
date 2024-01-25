@@ -210,12 +210,12 @@
   margin-bottom: 15px;
 }
 
-.save-quantity-link,
+.save-quantity-link, 
 .quantity-input {
   display: none;
 }
 
-.is-editing-quantity .quantity-input {
+.is-editing-quantity .quantity-input{
   display: initial;
 }
 
@@ -224,10 +224,6 @@
 }
 
 .is-editing-quantity .update-quantity-link {
-  display: none;
-}
-
-.is-editing-quantity .quantity-label {
   display: none;
 }
 
