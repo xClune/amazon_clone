@@ -146,8 +146,7 @@ export function renderOrderSummary() {
             renderOrderSummary();
             renderPaymentSummary();
             renderCheckoutHeader();
-            });
-            
+            });    
         });
 
     // CSS adjustments when clicking update link
