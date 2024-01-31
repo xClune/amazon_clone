@@ -1,4 +1,4 @@
-import { addToCart, cart, loadFromStorage } from "../../data/cart.js";
+import { addToCart, cart, loadFromStorage } from "../../scripts/data/cart.js";
 
 
 // best practise, test each condition of all
