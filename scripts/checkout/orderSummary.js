@@ -26,8 +26,8 @@ export function renderOrderSummary() {
         const dateString = calculateDeliveryDate(deliveryOption);
 
         cartSummaryHTML +=`
-            <div class="cart-item-container 
-                js-cart-item-container-${matchingProduct.id}">
+            <div class="cart-item-container js-cart-item-container
+            js-cart-item-container-${matchingProduct.id}">
                 <div class="delivery-date">
                 Delivery date: ${dateString}
                 </div>
@@ -43,7 +43,7 @@ export function renderOrderSummary() {
                         <div class="product-price">
                             $${(formatCurrency(matchingProduct.priceCents))}
                         </div>
-                        <div class="product-quantity">
+                        <div class="product-quantity js-product-quantity-${matchingProduct.id}">
                             <span class="quantity-label">
                             Quantity: </span>
 
@@ -59,7 +59,8 @@ export function renderOrderSummary() {
                             <span class="save-quantity-link js-save-quantity-link link-primary" data-product-id="${matchingProduct.id}">Save
                             </span>
 
-                            <span class="delete-quantity-link js-delete-link link-primary" data-product-id="${matchingProduct.id}">
+                            <span class="delete-quantity-link js-delete-link 
+                            js-delete-link-${matchingProduct.id} link-primary" data-product-id="${matchingProduct.id}">
                             Delete
                             </span>
                         </div>
@@ -139,7 +140,7 @@ export function renderOrderSummary() {
             const productId = link.dataset.productId;
             removeFromCart(productId);
 
-            //const container = document.querySelector(`.js-cart-item-container-${productId}`);
+            const container = document.querySelector(`.js-cart-item-container-${productId}`);
             
             container.remove();
             
